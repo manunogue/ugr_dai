@@ -1,0 +1,76 @@
+{% extends "layout.html" %}
+{% block title %}Página Contacto{% endblock %}
+{% block O2 %}  class="selected" {% endblock %}
+{% block body %}	
+
+	<script type="text/javascript">
+	$(document).ready(function(){
+	 $("#titulo").click(function() {
+		 $("h3").css({'color':'blue','font-size':'1.7em','background':'grey'});
+	   });
+	 
+	});
+	</script>
+
+	<script type="text/javascript">
+	$(document).ready(function(){
+	 $("#parrafo").click(function() {
+		 $("p").css({'font-size':'1.3em'});
+	   });
+	 
+	});
+	</script>
+
+	<script type="text/javascript">
+	$(document).ready(function() {
+	   // Muestra y oculta los menús
+	   $('ul li:has(ul)').hover(
+	      function(e)
+	      {
+	         $(this).find('ul').css({display: "block"});
+	      },
+	      function(e)
+	      {
+	         $(this).find('ul').css({display: "none"});
+	      }
+	   );
+	});
+	</script>
+
+
+
+	<div>
+		<!-- img src="../static/images/photographer.jpg" alt=""-->
+
+		<div>
+			<button id="titulo" class="btn btn-lg btn-primary">Modificar títulos</button> 
+			<button id="parrafo" class="btn btn-lg btn-primary">Agrandar párrafos</button> 
+		</div>
+
+		<div class="article">
+			<h3>We Have Free Templates for Everyone</h3>
+			<p>
+				Our website templates are created with inspiration, checked for quality and originality and meticulously sliced and coded. What’s more, they’re absolutely free! You can do a lot with them. You can modify them. You can use them to design websites for clients, so long as you agree with the <a href="http://www.freewebsitetemplates.com/about/terms/">Terms of Use</a>. You can even remove all our links if you want to.
+			</p>
+		</div>
+
+		<ul>
+		   <li>MOSTRAR	REFERENCIAS
+		      <ul>
+		         <li ><a href="#">Referencia 1</a></li>
+		         <li ><a href="#">Referencia 2</a></li>
+		         <li ><a href="#">Referencia 3</a></li>
+		      </ul>
+		   </li>
+		</ul>
+	</div>
+
+
+    <h2>Mapa de restaurantes.</h2>   
+    {% with map=googlemap_obj("another-map", 40.7142700, -74.0059700, markers=markers, style=( "height: 300px;" "width: 300px;")) %}
+        {{ map.html }} 
+        {{ map.js }}
+    {% endwith %}
+
+{% endblock %}
+

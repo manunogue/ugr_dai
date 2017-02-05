@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+{% block title %}Restaurantes{% endblock %}
+{% block O5 %}  class="selected" {% endblock %}
+{% block body %}	
+	<h1><span>Restaurantes</span></h1>
+
+
+	<script type="text/javascript">
+	$(document).ready(function(){
+		$.get ('/get_db_Rest', {}, function (data) { $('#restaurantes').html(data); } );
+
+		$("#Siguientes").click(function() {
+			// Modificamos el contenido del div con lo que nos devuelve la funcion (data)
+	 		$.get ('/get_nextRest', {}, function (data) { $('#restaurantes').html(data); } );
+	 	});	 
+	});
+	</script>
+
+	<div id="restaurantes"></div>
+
+	<div>
+		<hr>
+		<button id="Siguientes" class="btn btn-lg btn-primary">Mostrar Siguientes</button> 
+	</div>
+
+
+
+{% endblock %}
+

@@ -1,0 +1,114 @@
+{% extends "layout.html" %}
+{% block title %}Graphics{% endblock %}
+{% block O3 %}  class="selected" {% endblock %}
+{% block body %}
+
+    <!-- GRÁFICA PARA RESTAURANTES -->
+
+    <script type="text/javascript">
+        $(function () {
+            Highcharts.chart('container', {
+                chart: {
+                    plotBackgroundColor: null,
+                    plotBorderWidth: null,
+                    plotShadow: false,
+                    type: 'pie'
+                },
+                title: {
+                    text: 'Categorías de los 100 primeros restaurantes'
+                },
+                tooltip: {
+                    pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                },
+                plotOptions: {
+                    pie: {
+                        allowPointSelect: true,
+                        cursor: 'pointer',
+                        dataLabels: {
+                            enabled: true,
+                            format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                            style: {
+                                color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                            }
+                        }
+                    }
+                },
+                series: [{
+                    name: 'Brands',
+                    colorByPoint: true,
+                    data: [ 
+                        {% for i in range(n) %}
+                            { name: '{{names[i]}}', y: {{values[i]}} },
+                        {% endfor %}
+                    ]
+                }]
+            });
+        });
+    </script>
+
+    <!-- GRÁFICA PARA TWITTER -->
+    <script type="text/javascript">
+        $(function () {
+            Highcharts.chart('container2', {
+                chart: {
+                    type: 'column'
+                },
+                title: {
+                    text: 'Seguidores y publicaciones de la gente que twittea sobre ibiza'
+                },
+                xAxis: {
+                    categories: [
+                    {% for i in range(n2) %}
+                        '{{names2[i]}}',
+                    {% endfor %}     
+                    ],
+                    crosshair: true
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: 'Unidades'
+                    }
+                },
+                tooltip: {
+                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                        '<td style="padding:0"><b>{point.y:.1f} u</b></td></tr>',
+                    footerFormat: '</table>',
+                    shared: true,
+                    useHTML: true
+                },
+                plotOptions: {
+                    column: {
+                        pointPadding: 0.2,
+                        borderWidth: 0
+                    }
+                },
+                series: [{
+                    name: 'Followers',
+                    data: {{ followers }}
+                }, {
+                    name: 'Statuses',
+                    data: {{ statuses }}
+
+                }]
+            });
+        });
+    </script>
+
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+
+    <div><hr></div>
+    <div id="container" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"> </div> 
+
+    <div><hr>  
+    <p></p><h1><span>Twitter</span></h1>    
+    </div>
+    <div id="container2" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+
+
+
+
+{% endblock %}
+

@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+{% block title %}Página Contacto{% endblock %}
+{% block O4 %}  class="selected" {% endblock %}
+{% block body %}	
+	<h1><span>Bienvenido al sistema {{ user['Username'] }}.</span></h1>
+	<div class="article">
+		<h3> A continuación se muestran sus datos personales: </h3>
+			<pre>
+
+		Nombre de usuario: {{ user['Username'] }}
+	Contraseña: {{ user['Password'] }}
+	   Correo: {{ user['Email'] }}
+			</pre>
+			<form action="modificar">
+	    		<button type="submit">Modificar datos</button>
+	    	</form>
+	</div>
+
+	<div>
+		<img src="../static/images/user.png" alt="">
+		<div class="article">
+			<h3>Estas han sido sus últimas visitas: </h3>
+			{% for page in session['urls'] %}
+				<li><a href="{{page}}">{{page}}</a></li>
+			{% endfor %}
+		</div>
+	</div>
+{% endblock %}
+{% block footer %}	
+  	<div class="container">
+  		<form action="logout">
+	    	<button type="submit">Logout</button>
+	    </form>
+	</div>  
+{% endblock %}

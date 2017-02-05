@@ -1,0 +1,65 @@
+<!doctype html>
+
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>{% block title %}{% endblock %} - Manuel Noguera </title>
+	<link rel="stylesheet" type="text/css" href="../static/css/style.css">
+	<link rel="stylesheet" type="text/css" href="../static/css/mobile.css" media="screen and (max-width : 568px)">
+	<link rel="stylesheet" href="../static/bootstrap/css/bootstrap.min.css" >
+	<link rel="stylesheet" href="../static/bootstrap/css/misestilos.css" >
+
+	<script type="text/javascript" src="../static/js/mobile.js"></script>
+	<script type="text/javascript" src="../static/js/jquery-3.1.1.min.js"></script>  <!-- jQuery Reference-->
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+	<div class="container">
+		<div id="header">
+			<a href="index.html" class="logo">
+				<img src="../static/images/logo2.jpg" alt="">
+			</a>
+			<ul id="navigation">
+				<li{% block O1 %}{% endblock %}> <a href="index">home</a> </li>
+				<li{% block O2 %}{% endblock %}> <a href="about">about</a> </li>
+				<li{% block O3 %}{% endblock %}> <a href="graphics">graphics</a> </li>
+				<li{% block O4 %}{% endblock %}> <a href="user">user</a> </li>
+				<li{% block O5 %}{% endblock %}> <a href="restaurantes">restaurantes</a> </li>
+				<li{% block O6 %}{% endblock %}> <a href="tweets">tweets</a> </li>
+				<li{% block O7 %}{% endblock %}> <a href="rss">rss</a> </li>				
+			</ul>
+		</div>
+		<div id="body">
+			{% block body %}{% endblock %}
+		</div>
+		<!-- class="active" -->
+
+		<div id="footer">
+			{% block footer %}{% endblock %}
+			<div>
+				<p>&copy; Manuel Noguera DAI-2016.</p>
+				<ul>
+					<li>
+						<a href="http://freewebsitetemplates.com/go/twitter/" id="twitter">twitter</a>
+					</li>
+					<li>
+						<a href="http://freewebsitetemplates.com/go/facebook/" id="facebook">facebook</a>
+					</li>
+					<li>
+						<a href="http://freewebsitetemplates.com/go/googleplus/" id="googleplus">googleplus</a>
+					</li>
+					<li>
+						<a href="http://pinterest.com/fwtemplates/" id="pinterest">pinterest</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    	<!-- Include all compiled plugins (below), or include individual files as needed -->
+    	<script src="js/bootstrap.min.js"></script>
+	</div>
+</body>
+</html>

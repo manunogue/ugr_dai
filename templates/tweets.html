@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+{% block title %}Tweets{% endblock %}
+{% block O6 %}  class="selected" {% endblock %}
+{% block body %}	
+
+	<script>window.twttr = (function(d, s, id) {
+	  var js, fjs = d.getElementsByTagName(s)[0],
+	    t = window.twttr || {};
+	  if (d.getElementById(id)) return t;
+	  js = d.createElement(s);
+	  js.id = id;
+	  js.src = "https://platform.twitter.com/widgets.js";
+	  fjs.parentNode.insertBefore(js, fjs);
+
+	  t._e = [];
+	  t.ready = function(f) {
+	    t._e.push(f);
+	  };
+
+	  return t;
+	}(document, "script", "twitter-wjs"));</script>
+
+	<script type="text/javascript">
+	$(document).ready(function(){
+		$.get ('/get_tweets', {}, function (data) { $('#tweets').html(data); } );
+	});
+	</script>
+
+	<div> <h2>  Últimos tweets sobre ibiza!! <hr> </h2> </div>
+
+	<div id="tweets"></div>
+
+	<div>
+	<hr> <a class="twitter-follow-button" href="https://twitter.com/manuelnm95" data-size="large"> Follow @manuelnm95</a>
+	</div>
+
+
+
+{% endblock %}
+

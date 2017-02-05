@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+{% block title %}RSS{% endblock %}
+{% block O7 %}  class="selected" {% endblock %}
+{% block body %}	
+
+	<h2><span>Últimas noticias sobre ciencia en el diario ElPaís</span></h2>
+
+	<ul> 
+		{% for new in news %}
+			<p><a href="{{new.link}}">{{new.title}}</p></li>
+		{% endfor %}
+	</ul>	
+
+{% endblock %}
+

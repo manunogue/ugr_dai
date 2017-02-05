@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+{% block title %}Página principal{% endblock %}
+{% block O1 %}  class="selected" {% endblock %}
+{% block body %}	
+	<div>
+		<img src="../static/images/beach2.jpg" class="img-responsive" alt="Imagen responsive">
+	</div>
+	<ul>
+		<li>
+			<a href="gallery">
+				<img src="../static/images/the-father.jpg" class="img-responsive" alt="Imagen responsive">
+				<span>the father</span>
+			</a>
+		</li>
+		<li>
+			<a href="gallery">
+				<img src="../static/images/bible.png" class="img-responsive" alt="Imagen responsive">
+				<span>GUIDE</span>
+			</a>
+		</li>
+		<li>
+			<a href="gallery">
+				<img src="../static/images/the-nerd.jpg" class="img-responsive" alt="Imagen responsive">
+				<span>the nerd</span>
+			</a>
+		</li>
+	</ul>
+{% endblock %}
+
+{% block P1 %} class="active" {% endblock %}
+
+
+{% block footer %}	
+	{% if 'uname' in session %}
+		<div class="article">
+			<p> Usuario activo: {{ session['uname'] }} </p>
+		</div>
+	  	<div class="container">
+	  		<form action="logout">
+		    	<button type="button" class="btn btn-lg btn-primary">Logout</button>
+		    </form>
+		</div>  
+	{% else %}
+		<div class="container">
+			<form action="login" method="post">
+				<label><b>Username</b></label>
+				<input type="text" placeholder="Usuario:" name="uname" id ="uname" required>
+				<label><b>Password</b></label>
+				<input type="password" placeholder="Contraseña:" name="psw" id ="psw" required>
+				<button type="submit" class="btn btn-lg btn-primary">Login</button>
+			</form>
+		</div>  
+	{% endif %}
+{% endblock %}
+

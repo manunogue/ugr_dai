@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+{% block title %}Página principal{% endblock %}
+{% block O4 %}  class="selected" {% endblock %}
+{% block body %}	
+	<form id="formulario" action="change" method="post">
+	    <fieldset>
+	        <legend>Introduzca los nuevos datos:</legend>
+	            <label>Nombre:</label>
+	                <input id="campo1" name="nombre" type="text" />
+	            <label>Contraseña:</label>
+	                <input id="campo2" name="cont" type="text" />
+				<label>Correo</label>
+	                <input id="campo3" name="email" type="text" />
+	            <input id="campo3" name="enviar" type="submit" value="Enviar" />
+	    </fieldset>
+	</form>
+{% endblock %}
